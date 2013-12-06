@@ -38,4 +38,26 @@ public class TreeReaderTest extends TestCase {
         writer.write(node, new PrintWriter(System.out));
         assertEquals(node, tmpNode);
     }
+
+    public void testConfluentTree() throws IOException, URISyntaxException {
+        URL url = TreeReaderTest.class.getResource("confluent.txt");
+        File file = new File(url.toURI());
+
+        TreeReader reader = new TextTreeReader();
+        TreeNode node = reader.read(new FileReader(file));
+
+        TreeNode cmpRoot = new TreeNode(6);
+        TreeNode cmpNode = cmpRoot.addChild(new TreeNode(7));
+        cmpNode = cmpNode.addChild(new TreeNode(3));
+        cmpNode = cmpNode.addChild(new TreeNode(4));
+        cmpNode = cmpNode.addChild(new TreeNode(10));
+        cmpNode = cmpNode.addChild(new TreeNode(13));
+        cmpNode = cmpNode.addChild(new TreeNode(16));
+        cmpNode = cmpNode.addChild(new TreeNode(21));
+
+        TreeWriter writer = new TextTreeWriter();
+        writer.write(node, new PrintWriter(System.out));
+        writer.write(cmpRoot, new PrintWriter(System.out));
+        assertEquals(node, cmpRoot);
+    }
 }
