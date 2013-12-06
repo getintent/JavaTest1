@@ -53,7 +53,7 @@ public class TreeReaderTest extends TestCase {
         cmpNode = cmpNode.addChild(new TreeNode(10));
         cmpNode = cmpNode.addChild(new TreeNode(13));
         cmpNode = cmpNode.addChild(new TreeNode(16));
-        cmpNode = cmpNode.addChild(new TreeNode(21));
+        cmpNode.addChild(new TreeNode(21));
 
         TreeWriter writer = new TextTreeWriter();
         writer.write(node, new PrintWriter(System.out));
