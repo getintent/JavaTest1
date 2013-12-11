@@ -1,5 +1,6 @@
 package com.getintent.interview;
 
+import java.io.IOException;
 import java.io.Writer;
 
 /**
@@ -20,5 +21,5 @@ import java.io.Writer;
  * in a separate lines with tree space indentation relative parent node
  */
 public interface TreeWriter {
-    public void write(TreeNode node, Writer w);
+    public void write(TreeNode node, Writer w) throws IOException;
 }
