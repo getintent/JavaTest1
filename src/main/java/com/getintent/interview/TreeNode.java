@@ -11,7 +11,16 @@ public class TreeNode {
         this.value = value;
     }
 
-    public void addChild(TreeNode child) {
+    public int getValue() {
+        return value;
+    }
+
+    public List<TreeNode> getChildren() {
+        return children;
+    }
+
+    public TreeNode addChild(TreeNode child) {
         children.add(child);
+        return this;
     }
 }
