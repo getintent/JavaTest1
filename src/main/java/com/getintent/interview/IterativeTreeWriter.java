@@ -20,6 +20,12 @@ public class IterativeTreeWriter implements TreeWriter {
         }
     };
 
+    /**
+     * Writes given tree to specified writer. Uses guava {@code TreeTraverser} internally.
+     * @param node root of the given tree.
+     * @param w writer to write the tree.
+     * @throws IOException
+     */
     @Override
     public void write(TreeNode node, Writer w) throws IOException {
         checkNotNull(node); // fail fast

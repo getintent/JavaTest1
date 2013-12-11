@@ -14,10 +14,10 @@ import java.util.Deque;
 public class StackBasedTreeReader implements TreeReader {
 
     /**
-     * Reads tree from given reader.
+     * Reads tree from given reader using explicit stack.
      * Closing the reader and maintaining correct input structure is the caller's responsibility.
      * @param reader reader to read from.
-     * @return read tree
+     * @return root of the read tree
      * @throws IOException
      */
     @Override
