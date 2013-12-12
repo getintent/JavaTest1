@@ -27,8 +27,8 @@ public class BitSetMonochromeScreen implements MonochromeScreen {
      */
     @Override
     public void init(int width, int height) {
-        checkArgument(width >= 0);
-        checkArgument(height >= 0);
+        checkArgument(width > 0);
+        checkArgument(height > 0);
         this.width = width;
         this.height = height;
         this.state = new BitSet(checkedMultiply(width, height));
@@ -49,9 +49,9 @@ public class BitSetMonochromeScreen implements MonochromeScreen {
         checkArgument(x2 < width);
         checkArgument(y < height);
         checkArgument(x1 <= x2);
-        int left = coordinatesToIndex(x1, y);
-        int right = coordinatesToIndex(x2, y);
-        state.set(left, right + 1);
+        for (int x = x1; x <= x2; ++x) {
+            drawPoint(x, y);
+        }
     }
 
     /**
@@ -75,6 +75,10 @@ public class BitSetMonochromeScreen implements MonochromeScreen {
     private int coordinatesToIndex(int x, int y) {
         // check for integer overflow
         return checkedAdd(x, checkedMultiply(y, width));
+    }
+
+    private void drawPoint(int x, int y) {
+        state.set(coordinatesToIndex(x, y));
     }
 
     @VisibleForTesting boolean hasBlackPoint(int x, int y) {

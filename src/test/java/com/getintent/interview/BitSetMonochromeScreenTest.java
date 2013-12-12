@@ -1,5 +1,8 @@
 package com.getintent.interview;
 
+import com.google.common.collect.ContiguousSet;
+import com.google.common.collect.DiscreteDomain;
+import com.google.common.collect.Range;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -8,6 +11,7 @@ import org.junit.rules.ExpectedException;
 import java.math.RoundingMode;
 
 import static com.google.common.math.IntMath.sqrt;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -90,6 +94,14 @@ public class BitSetMonochromeScreenTest {
         screen.drawHorizontalLine(0, 3, 5);
         for (int i = 0; i <=3; ++i) {
             assertTrue(screen.hasBlackPoint(i, 5));
+        }
+        //check that other points are white
+        Range<Integer> xs = Range.closedOpen(4, 10);
+        Range<Integer> ys = Range.closedOpen(6, 10);
+        for (int x : ContiguousSet.create(xs,DiscreteDomain.integers())) {
+            for (int y : ContiguousSet.create(ys,DiscreteDomain.integers())) {
+                assertFalse(screen.hasBlackPoint(x, y));
+            }
         }
     }
 }
