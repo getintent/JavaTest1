@@ -1,6 +1,7 @@
 package com.getintent.interview;
 
-import java.io.Writer;
+import java.io.IOException;
+import java.io.Reader;
 
 /**
  * Prints a tree to given writer in "indentation form". E.g.
@@ -19,8 +20,9 @@ import java.io.Writer;
  * In other words, we just lest children of each nodes
  * in a separate lines with tree space indentation relative parent node
  *
- * @see com.getintent.interview.TreeReader
+ * @author Roman Besolov
+ * @see com.getintent.interview.TreeWriter
  */
-public interface TreeWriter {
-    public void write(TreeNode node, Writer w);
+public interface TreeReader {
+    public TreeNode read(Reader reader) throws IOException, TreeFormatException;
 }

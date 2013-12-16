@@ -14,4 +14,30 @@ public class TreeNode {
     public void addChild(TreeNode child) {
         children.add(child);
     }
+
+    public int getValue() {
+        return value;
+    }
+
+    public List<TreeNode> getChildren() {
+        return children;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        TreeNode treeNode = (TreeNode) o;
+
+        return value == treeNode.value && children.equals(treeNode.children);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = value;
+        result = 31 * result + children.hashCode();
+        return result;
+    }
 }
